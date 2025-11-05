@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace LigaApp.MVVM.Model
 {
     public class EquipoModel
     {
+
+        public int posicion { get; set; }
         public string id {  get; set; }
         public string NOMBRE { get; set; }
         public string N_PARTIDOS { get; set; }
@@ -22,6 +25,14 @@ namespace LigaApp.MVVM.Model
         public string escudo { get; set; }
 
         public string EscudoCompleto => $"https://chetosfs.com/{escudo}";
+
+        public SolidColorBrush ColorCamisetaBrush
+        {
+            get
+            {
+                return new BrushConverter().ConvertFromString(colorCamiseta) as SolidColorBrush ?? Brushes.Gray;
+            }
+        }
 
 
         public override string ToString()
