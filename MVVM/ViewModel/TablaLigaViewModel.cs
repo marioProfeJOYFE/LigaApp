@@ -48,6 +48,7 @@ namespace LigaApp.MVVM.ViewModel
             var lista = await _api.ObtenerClasificacionActual();
             foreach(var equipo in lista)
             {
+                equipo.posicion = lista.IndexOf(equipo) + 1;
                 listaEquipos.Add(equipo);
             }
 

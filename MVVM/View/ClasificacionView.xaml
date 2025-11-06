@@ -20,12 +20,179 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Grid>
-        <StackPanel>
-            <ListBox 
-            ItemsSource="{Binding listaEquipos}"
-        />
-        </StackPanel>
+    <Grid >
+        <DataGrid ItemsSource="{Binding listaEquipos}"
+                  AutoGenerateColumns="False"
+                  Background="#FF1E1E2E"
+                  CanUserAddRows="False"
+                  BorderThickness="0"
+                  GridLinesVisibility="None"
+                  HeadersVisibility="Column"
+                  Margin="10,60,10,10"
+                  >
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Padding" Value="8" />
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Background" Value="#FF1E1E2E"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Padding" Value="5" />
+                </Style>
+            </DataGrid.CellStyle>
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="POS" SortMemberPath="posicion">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding posicion}" 
+                                FontWeight="Bold" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="EQUIPO" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel 
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Left">
+                                <Image 
+                                    Source="{Binding EscudoCompleto}" 
+                                    Width="30" 
+                                    Height="30" Margin="5"/>
+                                <TextBlock 
+                                    Text="{Binding NOMBRE}" 
+                                    FontWeight="Bold" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="COLOR" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Ellipse Width="16"
+                                     Height="16"
+                                     Fill="{Binding ColorCamisetaBrush}"
+                                     Stroke="Gray"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="PNTS" SortMemberPath="PUNTOS">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding PUNTOS}" 
+                                FontWeight="Bold" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="PJ" SortMemberPath="N_PARTIDOS">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding N_PARTIDOS}" 
+                                FontWeight="Bold" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="V" SortMemberPath="N_VICTORIAS">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding N_VICTORIAS}" 
+                                FontWeight="Bold" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="E" SortMemberPath="N_EMPATES">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding N_EMPATES}" 
+                                FontWeight="Bold" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="P" SortMemberPath="N_DERROTAS">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding N_DERROTAS}" 
+                                FontWeight="Bold" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="GF" SortMemberPath="G_FAVOR">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding G_FAVOR}" 
+                                FontWeight="Bold" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="GC" SortMemberPath="G_CONTRA">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding G_CONTRA}" 
+                                FontWeight="Bold" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="DIF" SortMemberPath="DIF">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Text="{Binding DIF}" 
+                                FontWeight="Bold" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
         
     </Grid>
 </Page>
