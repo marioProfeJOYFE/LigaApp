@@ -17,6 +17,8 @@ namespace LigaApp.MVVM.ViewModel
         private readonly ApiService _api;
         public ObservableCollection<EquipoModel> listaEquipos { get; set; }
 
+        public ObservableCollection<ResultadoModel> listaResultados { get; set; }
+
         private bool _estaCargando;
 
         public ICommand CargarTablaCommand { get; }
@@ -27,6 +29,7 @@ namespace LigaApp.MVVM.ViewModel
             //Implementar llamada API
             _api = new ApiService();
             listaEquipos = new ObservableCollection<EquipoModel>();
+            listaResultados = new ObservableCollection<ResultadoModel>();
             CargarTablaCommand = new RelayCommand(async async => await CargarClasificacion());
         }
 
@@ -50,6 +53,13 @@ namespace LigaApp.MVVM.ViewModel
             {
                 equipo.posicion = lista.IndexOf(equipo) + 1;
                 listaEquipos.Add(equipo);
+            }
+
+            var resultados = await _api.ObtenerResultados();
+            foreach(var resultado in resultados)
+            {
+                resultado.comprobarVisitante();
+                listaResultados.Add(resultado);
             }
 
             EstaCargando = false;

@@ -22,5 +22,15 @@ namespace LigaApp
             InitializeComponent();
             MainFrame.Navigate(new ClasificacionView());
         }
+
+        public void  HomeButton_Checked(object sender, RoutedEventArgs args)
+        {
+            MainFrame.Navigate(new ClasificacionView());
+        }
+
+        public void ProfileButton_Checked(object sender, RoutedEventArgs args)
+        {
+            MainFrame.Navigate(new ResultadosView());
+        }
     }
 }

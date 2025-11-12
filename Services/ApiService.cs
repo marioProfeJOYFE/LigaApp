@@ -49,5 +49,17 @@ namespace LigaApp.Services
             return lista ?? new List<EquipoModel>();
         }
 
+        public async Task<List<ResultadoModel>> ObtenerResultados(CancellationToken cancellationToken = default)
+        {
+            // Llama al endpoint de la API y almacena el resultado en un string
+            string json = await _http.GetStringAsync("resultados", cancellationToken)
+                .ConfigureAwait(false);
+
+            // Deserializamos el JSON en objetos C# usando System.Text.Json
+            var lista = JsonSerializer.Deserialize<List<ResultadoModel>>(json, _jsonOptions);
+
+            return lista ?? new List<ResultadoModel>();
+        }
+
     }
 }
